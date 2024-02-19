@@ -1,0 +1,166 @@
+Pseudocode for methods in the classes:
+
+FinanceObject:
+ToString:
+1. return "Amount,Date" with the appropriate values
+
+
+Expense:
+ToString:
+1. return "Amount,Date,Category" with the appropriate values
+
+
+Report(abstract):
+CalculateTotal:
+1. Make for loop for every finance object in the list
+2. Add every amount to a total
+3. Return the total
+
+CalculateAverage:
+1. Use CalculateTotal to get the total
+2. Divide the total by the list length to get the average
+3. Return the average
+
+CalculateMedian:
+1. Sort the list by amount
+2. If the length of the list is odd, return the amount in the middle
+3. If the length is even, return the average between the two middle amounts ((x+y) / 2)
+
+AddToList(FinanceObject)
+1. Add the given finance object to the list
+
+RemoveFromList(index):
+1. Remove the finance object at the specified index of the list
+2. If that finance object does not exist, do nothing
+
+SaveReport(filepath):
+1. Save a txt file to the filepath
+2. Save the contents of ToString to the file
+
+
+ExpenseReport:
+GenerateReportFromFile(filepath):
+1. Clear the list
+2. Check if the file exists
+	2.1. If it exists, save all of the content of the file into a string
+	2.2. For each line, split the line at each ','
+	2.3. Make an expense object using the first string as the amount, the second string as the date and the third string as the category
+	2.4. Add that expense object to the list
+	2.5. If any data is not validly parsed, an exception will be thrown
+3. If the file does not exist, throw an exception
+4. Run CalculateReport to update the backing fields
+
+CalculateMostUsedCategory:
+1. Produce a new list of finance objects with unique categories
+2. Initialize a max count index at 0 and a max count at 0
+3. For each unique category finance object:
+	3.1. Initialize a count at 0
+	3.2. For each finance object in the original list
+		3.1.1. If finance object category = unique list category add 1 to the count
+	3.3. If the count is larger than the max count: set the max count to the count and set the max count index to the index of the outer loop
+4. Return the category of the finance object at the max count index of the unique list 
+
+CalculateReport:
+1. Run the CalculateTotal method and set the total field of the report
+2. Run the CalculateAverage method and set the average field of the report
+3. Run the CalculateMedian method and set the median field of the report
+4. Run the CalculateMostUsedCategory method and set the mostUsedCategory field of the report
+
+ToString:
+1. Create a string like this:
+"Total: <total>
+Average: <average>
+Median: <median>
+Most used category: <most used category>"
+2. Return it
+
+
+IncomeReport:
+GenerateReportFromFile(filepath):
+1. Clear the list
+2. Check if the file exists
+	2.1. If it exists, save all of the content of the file into a string
+	2.2. For each line, split the line at each ','
+	2.3. Make an income object using the first string as the amount and the second string as the date
+	2.4. Add that income object to the list
+	2.5. If any data is not validly parsed, an exception will be thrown
+3. If the file does not exist, throw an exception
+4. Run CalculateReport to update the backing fields
+
+CalculateReport:
+1. Run the CalculateTotal method and set the total field of the report
+2. Run the CalculateAverage method and set the average field of the report
+3. Run the CalculateMedian method and set the median field of the report
+
+ToString:
+1. Create a string like this:
+"Total: <total>
+Average: <average>
+Median: <median>"
+2. Return it
+
+
+FinanceTracker:
+LoadIncomeFile(filePath):
+1. Clear the loaded income list field
+2. Check if the file exists
+	2.1. If it exists, save all of the contents of the file to a string
+	2.2. For every line of the file, split the line at a ','
+	2.3. Set the first string to the amount and the second string to the date
+	2.4. Make an income object with those values and add it to the loaded income list field
+	2.5. If any parsing fails, an exception will be thrown
+3. If the file doesn't exist an exception is thrown
+4. For each income in the loaded income list, display each field in a table for the user to see
+
+LoadExpenseFile(filePath):
+1. Clear the loaded expense list field
+2. Check if the file exists
+	2.1. If it exists, save all of the contents of the file to a string
+	2.2. For every line of the file, split the line at a ','
+	2.3. Set the first string to the amount, the second string to the date and the third string to the category
+	2.4. Make an expense object with those values and add it to the loaded expense list field
+	2.5. If any parsing fails, an exception will be thrown
+3. If the file doesn't exist an exception is thrown
+4. For each expense in the loaded expense list, display each field in a table for the user to see
+
+SaveLoadedIncomeFile(filePath):
+1. For each loaded income file, build a new string with the ToString of the income on each line
+2. Save the string into a txt file at the specified filePath
+
+SaveLoadedExpenseFile(filePath):
+1. For each loaded expense file, build a new string with the ToString of the expense on each line
+2. Save the string into a txt file at the specified filePath
+
+AddIncome(Income):
+1. Add the specified income object to the loaded income list
+2. Append the ToString of the income object to the file storing all incomes
+3. Append the ToString of the income object to the file storing all incomes for the month of the income object using the date
+4. Add the income to the botton of the table of loaded incomes on the app
+5. Add the income amount to the total income 
+
+AddExpense(Expense):
+1. Add the specified expense object to the loaded expense list
+2. Append the ToString of the expense object to the file storing all expenses
+3. Append the ToString of the expense object to the file storing all expenses for the month of the expense object using the date
+4. Add the income to the botton of the table of loaded incomes on the app
+5. Add the expense amount to the total expenses
+
+DisplayExpenseReport(ExpenseReport)
+1. Display a user interface with the total, average, median and most used category labeled for the user to see
+
+DisplayIncomeReport(IncomeReport)
+1. Display a user interface with the total, average and median labeled for the user to see
+
+ClearLoadedIncomes()
+1. Reset the table that contains the loaded incomes to the user
+
+ClearLoadedExpenses()
+1. Reset the table that contains the loaded expenses to the user
+
+FinanceTracker(): (constructor)
+1. Run the LoadExpense method to load the file that stores all of the expenses
+2. Run the LoadIncome method to lead the file that stores all of the incomes
+3. For each expense in the loaded expense list, add the amount to a total
+4. Assign the total to the total expenses field
+5. For each income in the loaded income list, add the amount to a total
+6. Assign the total to the total income field

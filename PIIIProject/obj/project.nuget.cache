@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "Rqv/WOE0m7uO9vnA++x/Y9NvYxb/wW3k0APTJDkVsxAvjEv1Kn78xKmVLAZpeN5S6S+YW2FxxOFYBRfNsNACyQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\joeye\\source\\repos\\finance-tracker\\PIIIProject\\PIIIProject.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\joeye\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.26\\microsoft.windowsdesktop.app.ref.6.0.26.nupkg.sha512",
+    "C:\\Users\\joeye\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.26\\microsoft.netcore.app.ref.6.0.26.nupkg.sha512",
+    "C:\\Users\\joeye\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.26\\microsoft.aspnetcore.app.ref.6.0.26.nupkg.sha512",
+    "C:\\Users\\joeye\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.26\\microsoft.netcore.app.host.win-x64.6.0.26.nupkg.sha512"
+  ],
+  "logs": []
+}
